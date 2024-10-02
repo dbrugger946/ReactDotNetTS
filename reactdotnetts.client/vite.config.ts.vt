@@ -1,0 +1,28 @@
+
+import { defineConfig } from "vite";
+import react from "@vitejs/plugin-react";
+
+//const target = 'http://localhost:8888'
+
+export default defineConfig({
+    base: "/",
+    plugins: [react()],
+    preview: {
+        port: 3000,
+        strictPort: true,
+    },
+    server: {
+        proxy: {
+            '^/weatherforecast': {
+                target: 'reactdotnettsclient-weather-server-1:8080',
+                changeOrigin: true,
+                secure: false,
+                rewrite: (path) => path.replace(/^\/weatherforecast/, '/weatherforecast'),
+            },
+        },
+        port: 3000,
+        strictPort: true,
+        host: true,
+        origin: "http://0.0.0.0:3000",
+    },
+});
