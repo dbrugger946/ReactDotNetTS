@@ -1,5 +1,5 @@
-# FROM registry.access.redhat.com/ubi8/nodejs-18-minimal
-FROM docker.io/library/node:latest
+FROM registry.access.redhat.com/ubi8/nodejs-20-minimal
+# FROM docker.io/library/node:latest
 
 
 USER 0
